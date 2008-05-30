@@ -8,12 +8,12 @@ $domains = $session->domains();
 
 print "Expirace\tDomena\n";
 print "=========================================================================================\n";
-for ($p = 0; $p < count($domains); ++$p){
-	echo ($domains[$p]->expiry."\t");
-	echo ($domains[$p]->name."\n");
+foreach ($domains as $domain) {
+	echo ($domain->expiry."\t");
+	echo ($domain->name."\n");
 }
 
-#$domain = $session->domain($domains[0]->name);
-#print_r($domain);
+$domain = $session->domain($domains[0]->name);
+print_r($domain);
 
 ?>
