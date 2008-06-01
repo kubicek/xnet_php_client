@@ -48,3 +48,5 @@ Pak uz muzete volat vsechny potrebne funkce API.
 	$session = new Xnet('myusername','mypassword','https://admin.xnet.cz');
 	// ziskej domeny
 	$domains = $session->domains();
+
+Vase dotazy piste na tech@kraxnet.cz
