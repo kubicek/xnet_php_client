@@ -1,0 +1,50 @@
+###################################################
+
+XNET API PHP WRAPPER
+
+changed by Jiri Kubicek, KRAXNET s.r.o.
+
+coded by Aaron Quint
+	--> http://www.quirkey.com/blog/
+based on basecamp.rb by 37signals
+	--> http://www.37signals.com
+
+####################################################
+
+
+UVOD
+
+XNET API je XML REST rozhrani pro praci se slubami XNET.
+
+PHP wrapper je implementace API jako PHP trida.
+
+API documentation:
+http://www.xnet.cz/api
+
+REQUIREMENTS
+
+xnet.php vyzaduje tridy PEAR. Specificky
+
+HTTP_Request
+XML_Serializer
+
+ktere naleznete na http://pear.php.net
+
+Tridy jsou pribaleny i u techto zdrojovych kodu.
+
+POUZITI
+
+Je velmi jednoduche spravovat sluzby XNET pod Vasim uctem.
+Nejprve inicializujte Xnet objekt s Vasimi prihlasovacimi udaji:
+
+	$session = new Xnet('myusername','mypassword','https://admin.xnet.cz');
+
+Pak uz muzete volat vsechny potrebne funkce API.
+(blizsi informace v dokumentaci k API).
+
+	// Ziskejte seznam Vasich domen
+
+	// initialize 
+	$session = new Xnet('myusername','mypassword','https://admin.xnet.cz');
+	// ziskej domeny
+	$domains = $session->domains();
