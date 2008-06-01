@@ -1,5 +1,6 @@
 <?php
 
+
 // For all the fetchin'
 require_once 'HTTP/Request.php';
 require_once 'XML/Serializer.php';
@@ -26,7 +27,7 @@ class Xnet {
 	function domains() {
 	  	return $this->hook("/person/domains","domain");
 	}
-
+	
 	// Vraci informace o domene
 	function domain($fqdn) {
 		$fqdn = preg_replace('/\./', '_', $fqdn);
@@ -38,6 +39,16 @@ class Xnet {
 	  	return $this->hook("/person/subjects","subject");
 	}
 	
+	// Vraci seznam objednavek, ktere jsou vystaveny pro dany subjekt
+	function subject_orders($subject_id) {
+	  	return $this->hook("/subjects/{$subject_id}/orders","order");
+	}
+
+	// Vraci seznam domen, ktere jsou zarazeny pod dany subjekt
+	function subject_domains($subject_id) {
+	  	return $this->hook("/subjects/{$subject_id}/domains","domain");
+	}
+		
 	/*===================/
 	 * 	The Worker Bees  
 	/*===================*/
@@ -71,13 +82,13 @@ class Xnet {
 			$req->setMethod(HTTP_REQUEST_METHOD_POST);
 		}
 		$response = $req->sendRequest();
-		//print_r($req->getResponseHeader());
-		//echo $req->getResponseCode() .	"\n";
+		// print_r($req->getResponseHeader());
+		// echo $req->getResponseCode() .	"\n";
 		
 		if (PEAR::isError($response)) {
 		    return $response->getMessage();
 		} else {
-			//print_r($req->getResponseBody());
+			  // print_r($req->getResponseBody());
 		    return $req->getResponseBody();
 		}
 	}
